@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<head>
+	<%= stylesheet_link_tag "detail" , :media => "all" %>
+</head>
+<body>
+    <div class="wrapper">
+		<div id="picture" style="float:left;" class="wrapper">
+			<%= image_tag(@product.image_url) %>
+		</div>
+		
+		<div id="contents" style="float:middle;text-align:left" class="wrapper">
+			<h3><%= @product.name %></h3>
+			<%=sanitize @product.description %>	
+			<br>			
+			<span class="price" ><%= number_to_currency(@product.price) %> per <%= @product.unit %></span>
+			<br>
+			<input type="text" name=<%= @quantity %> value=<%= @quantity %> style="width: 2em">
+			<input type="submit" value="+"> <input type="submit" value="-">
+		</div>
+
+		<div id="footer" style="clear:both;text-align:center;" class="wrapper">
+			<br><br><br><br>Recommendation: <%= @product.description %> <br>
+			<%= link_to 'Edit', edit_product_path(@product) %> |
+			<%= link_to 'Back', products_path %>
+		</div>
+	
+	</div>
+</body>
